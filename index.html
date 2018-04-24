@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Rick O. Gilmore" />
+  <title>Video as data &amp; documentation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="libs/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="libs/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Video as data &amp; documentation</h1>
+    <h2 class="author">Rick O. Gilmore</h2>
+    <h3 class="date">2018-04-24 10:56:54</h3>
+</section>
+
+<section class="slide level2">
+
+<div class="centered">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/NSF_Logo.PNG" height=150px> <img src="https://science.nichd.nih.gov/confluence/download/attachments/34472103/NICHD-vertical-2-color.png?version=1&modificationDate=1477410070000&api=v2" height=150px> </br> <img src="https://sloan.org/storage/app/media/Logos/Sloan-Logo-stacked-black-web.png" height=150px> </br> <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-1/p200x200/30742999_10155158496606116_5443541606508527616_n.png?_nc_cat=0&oh=67265a186721fd0a36e640e780743cd4&oe=5B5FD0DB" height=150px/></p>
+</div>
+</section>
+<section><section id="agenda" class="titleslide slide level1"><h1>Agenda</h1></section><section id="video-as-data" class="slide level2">
+<h2>Video as data</h2>
+</section><section id="video-as-documentation" class="slide level2">
+<h2>Video as documentation</h2>
+</section><section id="open-video-sharing-with-databrary" class="slide level2">
+<h2>Open video sharing with Databrary</h2>
+</section><section id="video-analysis-with-datavyu" class="slide level2">
+<h2>Video analysis with Datavyu</h2>
+</section><section id="the-future-of-video-sharing" class="slide level2">
+<h2>The future of video sharing</h2>
+</section></section>
+<section><section id="video-as-data-1" class="titleslide slide level1"><h1>Video as data</h1></section><section class="slide level2">
+
+<video width="800" controls>
+<source src="https://nyu.databrary.org/slot/27087/0,372193/asset/119877/download?inline=true#t0,45" type="video/mp4"> Your browser does not support the video tag.
+</video>
+<p>Adolph, K., Tamis-LeMonda, C. &amp; Gilmore, R.O. (2017). PLAY Project: Pilot Data Collections. Databrary. Retrieved April 24, 2018 from <a href="https://nyu.databrary.org/volume/444" class="uri">https://nyu.databrary.org/volume/444</a>.</p>
+</section><section id="video" class="slide level2">
+<h2>Video…</h2>
+</section><section id="captures-the-complexities-and-nuances-of-behavior-unlike-any-other-measure" class="slide level2">
+<h2>Captures the complexities and nuances of behavior unlike any other measure</h2>
+</section><section id="can-be-readily-repurposed-to-answer-new-questions" class="slide level2">
+<h2>Can be readily repurposed to answer new questions</h2>
+</section><section id="contains-faces-voices-that-make-it-harder-to-share-openly" class="slide level2">
+<h2>Contains faces &amp; voices that make it hard(er) to share openly</h2>
+</section><section id="involves-large-file-sizes-that-pose-challenges-to-storage-streaming" class="slide level2">
+<h2>Involves large file sizes that pose challenges to storage &amp; streaming</h2>
+</section></section>
+<section><section id="video-as-documentation-1" class="titleslide slide level1"><h1>Video as documentation</h1></section><section class="slide level2">
+
+<video width="800" controls>
+<source src="https://nyu.databrary.org/slot/14765/0,79273/asset/64898/download?inline=true" type="video/mp4"> Your browser does not support the video tag.
+</video>
+<p>The PLAY Project Wiki: <a href="https://dev1.ed-projects.nyu.edu/wikis/docuwiki/doku.php/landing" class="uri">https://dev1.ed-projects.nyu.edu/wikis/docuwiki/doku.php/landing</a></p>
+</section><section class="slide level2">
+
+<video width="800" controls>
+<source src="https://nyu.databrary.org/slot/16668/0,140984/asset/72645/download?inline=true" type="video/mp4"> Your browser does not support the video tag.
+</video>
+<p>Bahrick, L.E. (2017). Multisensory Attention Assessment Protocol (MAAP). Databrary. <a href="http://doi.org/10.17910/B7.326" class="uri">http://doi.org/10.17910/B7.326</a>.</p>
+</section><section class="slide level2">
+
+<video width="800" controls>
+<source src="https://nyu.databrary.org/slot/9809/-/asset/11354/download?inline=true" type="video/mp4"> Your browser does not support the video tag.
+</video>
+<p>Naigles, L. (2014). Children use syntax to learn verb meanings. Databrary. <a href="http://doi.org/10.17910/B7J01M" class="uri">http://doi.org/10.17910/B7J01M</a>.</p>
+</section><section class="slide level2">
+
+<p><img src="https://nyu.databrary.org/slot/15068/-/asset/63850/download?inline=true" height=300px/></p>
+<audio controls>
+<source src="https://nyu.databrary.org/slot/12213/0,15046/asset/46757/download?inline=true" type="audio/mpeg"> Your browser does not support the audio element.
+</audio>
+<audio controls>
+<source src="https://nyu.databrary.org/slot/12212/0,15046/asset/46748/download?inline=true" type="audio/mpeg"> Your browser does not support the audio element.
+</audio>
+<p>Cole, P.M., Gilmore, R.O., Scherf, K.S. &amp; Perez-Edgar, K. (2016). The Proximal Emotional Environment Project (PEEP). Databrary. <a href="http://doi.org/10.17910/B7.248" class="uri">http://doi.org/10.17910/B7.248</a>.</p>
+</section><section id="video-audio" class="slide level2">
+<h2>Video (&amp; audio)…</h2>
+</section><section id="reveals-critical-procedural-details-that-text-based-descriptions-omit" class="slide level2">
+<h2>Reveals critical procedural details that text-based descriptions omit</h2>
+</section><section id="captures-the-complexities-and-nuances-of-experimenter-behavior-unlike-any-other-measure" class="slide level2">
+<h2>Captures the complexities and nuances of <em>experimenter</em> behavior unlike any other measure</h2>
+</section><section id="is-a-gold-standard-in-documenting-procedures-displays-materials" class="slide level2">
+<h2>Is a “gold-standard” in documenting procedures, displays, &amp; materials</h2>
+</section><section id="can-document-annotationcode-definitions" class="slide level2">
+<h2>Can document annotation/code definitions</h2>
+</section><section class="slide level2">
+
+<p><a href="https://dev1.ed-projects.nyu.edu/wikis/docuwiki/doku.php/manual2#operational_definitions"> <img src="img/play-wiki-sentence-def.jpg"/> </a></p>
+<p>The PLAY Project Wiki: <a href="https://dev1.ed-projects.nyu.edu/wikis/docuwiki/doku.php/landing" class="uri">https://dev1.ed-projects.nyu.edu/wikis/docuwiki/doku.php/landing</a></p>
+</section><section class="slide level2">
+
+<video width="800" controls>
+<source src="https://nyu.databrary.org/slot/14765/-/asset/63348/download?inline=true" type="video/mp4"> Your browser does not support the video tag.
+</video>
+<p>The PLAY Project Wiki: <a href="https://dev1.ed-projects.nyu.edu/wikis/docuwiki/doku.php/landing" class="uri">https://dev1.ed-projects.nyu.edu/wikis/docuwiki/doku.php/landing</a></p>
+</section><section class="slide level2">
+
+<p><a href="http://www.apa.org/science/about/psa/2017/10/video-data.aspx"> <img src="img/video-data-doc-apa.jpg"/> </a></p>
+<p>Adolph, K.E., Gilmore, R.O., &amp; Kennedy, J.L. (2017, October). Video data and documentation will improve psychological science. <em>Psychological Science Agenda</em>.</p>
+<!-- --- -->
+<!-- <a href="http://doi.org/doi:10.1038/s41562-017-0128"> -->
+<!-- <img src="img/nature-human-beh.jpg"/> -->
+<!-- </a> -->
+<!-- Gilmore, R.O. & Adolph, K.E. (2017). Video can make behavioural science more reproducible. *Nature Human Behaviour*. -->
+</section></section>
+<section><section id="open-video-sharing" class="titleslide slide level1"><h1>Open video sharing</h1></section><section class="slide level2">
+
+<p><a href="http://databrary.org"> <img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/> </a></p>
+<p><a href="http://databrary.org">Databrary.org</a></p>
+</section><section class="slide level2">
+
+<video width="800" autoplay loop>
+<source src="mov/databrary-splash.mp4" type="video/mp4"> Your browser does not support the video tag.
+</video>
+</section><section class="slide level2">
+
+<p><a href="http://databrary.org"> <img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/> </a></p>
+<h3 id="is">is…</h3>
+</section><section id="a-data-library" class="slide level2">
+<h2>A data library</h2>
+</section><section id="specialized-for-storing-sharing-browsing-and-reusing-video-audio-recordings-related-data" class="slide level2">
+<h2>Specialized for storing, sharing, browsing, and reusing video &amp; audio recordings + related data</h2>
+</section><section class="slide level2">
+
+<p><a href="http://databrary.org"> <img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/> </a></p>
+</section><section id="stores-and-shares-session-person-place-time-metadata" class="slide level2">
+<h2>Stores and shares session (person + place + time) metadata</h2>
+<h3 id="provides-a-policy-framework-for-securely-and-ethically-sharing-identifiable-data">Provides a policy framework for <em>securely</em> and <em>ethically</em> sharing identifiable data</h3>
+<h3 id="accelerates-discovery-through-open-data-sharing">Accelerates discovery through <em>open</em> data sharing</h3>
+</section><section id="open-unrestricted-data-sharing-accelerates-discovery" class="slide level2">
+<h2>Open (unrestricted) data sharing accelerates discovery</h2>
+</section><section id="unaltered-videos-are-most-valuable-for-reuse" class="slide level2">
+<h2>Unaltered videos are most valuable for reuse</h2>
+</section><section id="videos-are-identifiable-but-can-be-shared-with-participant-permission" class="slide level2">
+<h2>Videos are identifiable, but can be shared with participant permission</h2>
+</section><section id="sharing-identifiable-data" class="slide level2">
+<h2>Sharing identifiable data</h2>
+</section><section id="restrict-access-to-researchers-formally-authorized-by-their-institutions" class="slide level2">
+<h2><strong>Restrict access</strong>: To researchers formally authorized by their institutions</h2>
+<h3 id="access-agreement-signed-by-researcher-institution">Access agreement signed by researcher, institution</h3>
+</section><section id="seek-permission-to-share-using-standardized-language" class="slide level2">
+<h2><strong>Seek permission to share</strong>: Using standardized language</h2>
+</section><section id="store-for-research-team-use-preservation" class="slide level2">
+<h2>Store for research team use; preservation</h2>
+</section><section id="share-with-other-researchers-with-participant-permission" class="slide level2">
+<h2>Share with other researchers (with participant permission)</h2>
+</section><section class="slide level2">
+
+<p><img src="img/release-levels.jpg"></p>
+<p><a href="https://www.databrary.org/resources/guide/investigators/release/release-levels.html" class="uri">https://www.databrary.org/resources/guide/investigators/release/release-levels.html</a></p>
+</section></section>
+<section><section id="how-does-it-work" class="titleslide slide level1"><h1>How does it work?</h1></section><section id="register-for-access" class="slide level2">
+<h2>Register for access</h2>
+<h3 id="databrary-staff-get-in-touch">Databrary staff get in touch</h3>
+<h3 id="institution-signs-databrary-access-agreement">Institution signs <a href="https://www.databrary.org/resources/agreement.html">Databrary Access Agreement</a></h3>
+</section><section id="browsing" class="slide level2">
+<h2>Browsing</h2>
+<h3 id="log-on">Log on</h3>
+<h3 id="search-filter-play">Search, filter, play</h3>
+<h3 id="most-teaching-pre-research-use-cases-do-not-require-irb-approval">Most teaching &amp; pre-research use cases do not require IRB approval</h3>
+</section><section id="sharing-data" class="slide level2">
+<h2>Sharing data</h2>
+<h3 id="upload-as-as-you-go-self-curate">Upload as-as-you go (“self-curate”)</h3>
+<h3 id="add-metadata-links-to-other-resources">Add metadata, links to other resources</h3>
+<h3 id="give-collaborators-access">Give collaborators access</h3>
+<h3 id="share-when-youre-ready-paper-goes-to-press-grant-ends">Share when you’re ready (paper goes to press, grant ends)</h3>
+</section><section id="secondary-reuse" class="slide level2">
+<h2>Secondary (re)use</h2>
+<h3 id="get-irb-approval">Get IRB approval</h3>
+<h3 id="search-filter">Search, filter</h3>
+<h3 id="download">Download</h3>
+<h3 id="code-use-videos">Code &amp; use videos</h3>
+</section></section>
+<section><section id="video-analysis-with-datavyu-1" class="titleslide slide level1"><h1>Video analysis with Datavyu</h1></section><section class="slide level2">
+
+<video controls autoplay loop>
+<source src="mov/datavyu.mp4" type="video/mp4">
+</video>
+</section><section class="slide level2">
+
+<video width="800" controls>
+<source src="https://nyu.databrary.org/slot/27087/0,372193/asset/119877/download?inline=true#t47" type="video/mp4"> Your browser does not support the video tag.
+</video>
+</section></section>
+<section><section id="the-future-of-video-sharing-1" class="titleslide slide level1"><h1>The future of video sharing</h1></section><section id="domains-beyond-developmental-psychology" class="slide level2">
+<h2>Domains beyond developmental psychology</h2>
+</section><section id="from-data-repository-to-analysis-platform" class="slide level2">
+<h2>From data repository to analysis platform</h2>
+</section><section class="slide level2">
+
+<video controls autoplay>
+<source src="mov/summarize_demog.mp4" type="video/mp4">
+</video>
+<h3 id="scriptable-visualization">Scriptable visualization</h3>
+</section><section class="slide level2">
+
+<p><img src="https://github.com/PLAY-behaviorome/video-coding/blob/master/img/NYU019/time-line-plot-00-60-1.png?raw=true"/></p>
+<h3 id="visualize-datavyu-timelines-stored-on-databrary">Visualize Datavyu timelines stored on Databrary</h3>
+</section><section id="machine-assisted-audio-video-analysis" class="slide level2">
+<h2>Machine-assisted audio &amp; video analysis</h2>
+</section><section class="slide level2">
+
+<video width="600" controls>
+<source src="mov/Construction.mp4" type="video/mp4"> Your browser does not support the video tag.
+</video>
+</section><section class="slide level2">
+
+<video width="800" controls>
+<source src="mov/cusack_annotate3.mp4" type="video/mp4"> Your browser does not support the video tag.
+</video>
+<p>Source: LookIt, Kim Scott (MIT), &amp; Rhodri Cusack</p>
+</section><section class="slide level2">
+
+<p><img src="https://github.com/gilmore-lab/sips-2017-video-reproducibility/blob/master/img/gilmore-adolph-nat-hum-beh.jpg?raw=true" height=500px> </a></p>
+<p>Gilmore, R.O. &amp; Adolph, K.E. (2017). Video can make behavioural science more reproducible. <em>Nature Human Behaviour</em>. <a href="http://doi.org/10.1038/s41562-017-0128">doi:10.1038/s41562-017-0128</a></p>
+</section></section>
+<section><section id="thank-you" class="titleslide slide level1"><h1>Thank you</h1></section><section class="slide level2">
+
+<h3 id="databrary.org-databrary"><a href="https://databrary.org">databrary.org</a>, <span class="citation" data-cites="databrary">@databrary</span></h3>
+<h3 id="datavyu.org-datavyu"><a href="https://datavyu.org">datavyu.org</a>, <span class="citation" data-cites="datavyu">@datavyu</span></h3>
+<h3 id="rogilmorepsu.edu"><a href="mailto:rogilmore@psu.edu">rogilmore@psu.edu</a></h3>
+<h3 id="gilmore-lab.github.io"><a href="http://gilmore-lab.github.io">gilmore-lab.github.io</a></h3>
+</section><section class="slide level2">
+
+<p>This talk was produced on 2018-04-24 10:56:54 in <a href="http://rstudio.com">RStudio 1.1.383</a> using R Markdown and the reveal.JS framework. The code and materials used to generate the slides may be found at <a href="https://github.com/gilmore-lab/2018-04-25-introducing-databrary/" class="uri">https://github.com/gilmore-lab/2018-04-25-introducing-databrary/</a>. Information about the R Session that produced the slides is as follows:</p>
+</section><section class="slide level2">
+
+<pre><code>## R version 3.4.4 (2018-03-15)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Sierra 10.12.6
+## 
+## Matrix products: default
+## BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## loaded via a namespace (and not attached):
+##  [1] compiler_3.4.4  backports_1.1.2 magrittr_1.5    rprojroot_1.3-2
+##  [5] htmltools_0.3.6 tools_3.4.4     revealjs_0.9    yaml_2.1.18    
+##  [9] Rcpp_0.12.16    stringi_1.1.7   rmarkdown_1.9   knitr_1.20     
+## [13] stringr_1.3.0   digest_0.6.15   evaluate_0.10.1</code></pre>
+</section></section>
+    </div>
+  </div>
+
+  <script src="libs/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="libs/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'libs/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'libs/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
