@@ -351,6 +351,8 @@ Gilmore, R.O. & Adolph, K.E. (2017). Video can make behavioural science more rep
 
 ### [gilmore-lab.github.io](http://gilmore-lab.github.io)
 
+### <http://gilmore-lab.github.io/2018-04-25-introducing-databrary/>
+
 ---
 
 This talk was produced on `r Sys.time()` in [RStudio 1.1.383](http://rstudio.com) using R Markdown and the reveal.JS framework.
