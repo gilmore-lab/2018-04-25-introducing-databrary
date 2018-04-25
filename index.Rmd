@@ -108,13 +108,13 @@ Cole, P.M., Gilmore, R.O., Scherf, K.S. & Perez-Edgar, K. (2016). The Proximal E
 
 ## Video (& audio)...
 
-## Reveals critical procedural details that text-based descriptions omit
+## Reveal critical procedural details that text-based descriptions omit
 
-## Captures the complexities and nuances of *experimenter* behavior unlike any other measure
+## Capture the complexities and nuances of *experimenter* behavior unlike any other measure
 
-## Is a "gold-standard" in documenting procedures, displays, & materials
+## Are a "gold-standard" in documenting procedures, displays, & materials
 
-## Can document annotation/code definitions
+## Can document annotation/code definitions, supplementing text-based descriptions
 
 ---
 
@@ -149,15 +149,14 @@ Adolph, K.E., Gilmore, R.O., & Kennedy, J.L. (2017, October). Video data and doc
 
 <!-- Gilmore, R.O. & Adolph, K.E. (2017). Video can make behavioural science more reproducible. *Nature Human Behaviour*. -->
 
-# Open video sharing
-
 ---
 
-<a href="http://databrary.org">
-<img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/>
-</a>
+> If a picture paints a thousand words, then why can't I paint you?
+The words will never show the you I've come to know.
 
-[Databrary.org](http://databrary.org)
+"If", Bread
+
+# Open video sharing
 
 ---
 
@@ -172,11 +171,11 @@ Your browser does not support the video tag.
 <img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/>
 </a>
 
-### is...
+is...
 
 ## A data library
 
-## Specialized for storing, sharing, browsing, and reusing video & audio recordings + related data
+## Specialized for storing, sharing, browsing, and reusing video & audio recordings
 
 ---
 
@@ -184,35 +183,66 @@ Your browser does not support the video tag.
 <img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/>
 </a>
 
-## Stores and shares session (person + place + time) metadata
+Stores and shares...
 
-### Provides a policy framework for *securely* and *ethically* sharing identifiable data
+## Session (person + place + time) metadata + other types of data
 
-### Accelerates discovery through *open* data sharing
+---
 
-## Open (unrestricted) data sharing accelerates discovery
+<a href="http://databrary.org">
+<img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/>
+</a>
 
-## Unaltered videos are most valuable for reuse
+Provides...
 
-## Videos are identifiable, but can be shared with participant permission
+## a policy framework for *securely* and *ethically* sharing identifiable data
+
+---
+
+<a href="http://databrary.org">
+<img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=300px/>
+</a>
+
+Encourages (but does not require) ...
+
+## Open (unrestricted) data sharing
+
+### No requirement for collaboration or co-authorship
+
+### Expectation of citation
 
 ## Sharing identifiable data
 
+## Unaltered videos are most valuable for reuse
+
+## Videos are identifiable, so sharing requires participant permission
+
 ## **Restrict access**: To researchers formally authorized by their institutions
 
-### Access agreement signed by researcher, institution
+### [Access agreement](https://www.databrary.org/resources/agreement.html) signed by researcher, institution
 
-## **Seek permission to share**: Using standardized language
+---
 
-## Store for research team use; preservation
+```{r databrary-stats, include=FALSE}
+library(databraryapi)
+db_stats_now <- databraryapi::get_db_stats()
+```
 
-## Share with other researchers (with participant permission)
+###  `r db_stats_now['institutions']` Institutions • `r db_stats_now['investigators']` Investigators
+
+<img src="img/databrary-institutions.jpg" width=800px/>
+
+## **Seek permission to share**: Using [standardized template language](https://www.databrary.org/resources/templates/release-template.html)
 
 ---
 
 <img src="img/release-levels.jpg">
 
 <https://www.databrary.org/resources/guide/investigators/release/release-levels.html>
+
+## Store for research team/collaborator use; preservation
+
+## Share with other researchers (with participant permission)
 
 # How does it work?
 
@@ -260,11 +290,15 @@ Your browser does not support the video tag.
 
 ## Domains beyond developmental psychology
 
+---
+
+<img src="http://cas.la.psu.edu/images/sticker.jpg/@@images/2e843ca5-9446-49a7-802b-b145d4004d75.jpeg" width=700px/>
+
 ## From data repository to analysis platform
 
 ---
 
-<video controls autoplay>
+<video controls>
   <source src="mov/summarize_demog.mp4" type="video/mp4">
 </video>
 
@@ -274,7 +308,7 @@ Your browser does not support the video tag.
 
 <img src="https://github.com/PLAY-behaviorome/video-coding/blob/master/img/NYU019/time-line-plot-00-60-1.png?raw=true"/>
 
-### Visualize Datavyu timelines stored on Databrary
+### Visualize [Datavyu timelines](https://github.com/PLAY-behaviorome/video-coding) stored on Databrary
 
 ---
 
@@ -287,6 +321,8 @@ Your browser does not support the video tag.
 Your browser does not support the video tag.
 </video>
 
+*Source*: Ori Ossmy (NYU)
+
 ---
 
 <video width="800" controls>
@@ -294,7 +330,7 @@ Your browser does not support the video tag.
 Your browser does not support the video tag.
 </video>
 
-Source: LookIt, Kim Scott (MIT), & Rhodri Cusack
+*Source*: LookIt, Kim Scott (MIT), & Rhodri Cusack (Trinity College Dublin)
 
 ---
 
@@ -303,7 +339,7 @@ Source: LookIt, Kim Scott (MIT), & Rhodri Cusack
 
 Gilmore, R.O. & Adolph, K.E. (2017). Video can make behavioural science more reproducible. *Nature Human Behaviour*. [doi:10.1038/s41562-017-0128](http://doi.org/10.1038/s41562-017-0128)
 
-# Thank you
+# Let's share video and discover more, faster
 
 ---
 
